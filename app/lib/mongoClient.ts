@@ -14,9 +14,7 @@ async function dbConnect() {
   const MONGODB_URI = process.env.MONGODB_URI!;
 
   if (!MONGODB_URI) {
-    throw new Error(
-      "Please define the MONGODB_URI environment variable inside .env.local",
-    );
+    throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
   }
 
   if (cached.conn) {
@@ -32,13 +30,15 @@ async function dbConnect() {
   }
   try {
     cached.conn = await cached.promise;
-    console.log("✅ MongoDB connected")
   } catch (e) {
     cached.promise = null;
     throw e;
   }
 
-  return cached.conn;
+  if (cached.conn) {
+    console.log("♻ Using cached MongoDB connection");
+    return cached.conn;
+  }
 }
 
 export default dbConnect;
