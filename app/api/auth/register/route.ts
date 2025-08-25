@@ -1,23 +1,54 @@
 import { NextRequest, NextResponse } from "next/server";
-
-// type ResponseData = {
-//   message: string
-// }
+import User from "@/app/models/mongoose/User";
+import bcrypt from "bcryptjs";
+import dbConnect from "@/app/lib/mongoClient";
+import CreateUserCode from "@/app/lib/userCode";
 
 export async function POST(req: NextRequest) {
-  const { name, password, email } = await req.json();
-  const que = req.nextUrl.searchParams;
-  const header = req.headers.get("Authorization");
-  console.log("header", header);
-  console.log("password", password);
-  console.log("name", name);
-  console.log("email", email);
-  console.log("que", que);
-  return NextResponse.json(
-    { data: "okkkkkk" },
-    {
-      status: 300,
-      headers: { "X-Custom-Header": "test" },
+  await dbConnect();
+  const formData = await req.formData();
+  try {
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const password = formData.get("password")?.toString();
+    const user = await User.findOne({ $or: [{ username }, { email }] });
+    if (user) {
+      return NextResponse.json({ message: "user already exists", operation: false }, { status: 409 });
     }
-  );
+
+    if (password) {
+      let userCode : string = '';
+      let exists : null | boolean = true;
+      while(exists){
+        userCode = CreateUserCode();
+        exists = await User.findOne({userCode})
+      }
+      const hashPass = await bcrypt.hash(password, 10);
+      await User.create({
+        username,
+        email,
+        password: hashPass,
+        userCode
+      });
+      return NextResponse.json(
+        {
+          message: "user was created",
+          operation: true,
+        },
+        {
+          status: 200,
+        }
+      );
+    }
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "there are a problem in server!",
+        operation: false,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
