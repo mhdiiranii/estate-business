@@ -36,6 +36,7 @@ export async function POST(req: NextRequest) {
       {
         message: "there are a problem in server!",
         operation: false,
+        error:error
       },
       {
         status: 500,
@@ -64,6 +65,7 @@ export async function GET(req: NextRequest) {
       {
         message: "there are a problem in server!",
         operation: false,
+        error:error
       },
       {
         status: 500,

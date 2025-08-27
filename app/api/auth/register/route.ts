@@ -56,6 +56,7 @@ export async function POST(req: NextRequest) {
       {
         message: "there are a problem in server!",
         operation: false,
+        error:error
       },
       {
         status: 500,
