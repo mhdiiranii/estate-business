@@ -16,3 +16,33 @@ export interface PropertiType extends Document {
   features: string[];
   images: string[];
 }
+
+export interface LikeType extends Document {
+  userId: string;
+  propertiId: string;
+}
+
+type Coment = {
+  userId: string;
+  text: string;
+};
+
+export interface CommentType extends Document {
+  propertiId: string;
+  comments : Coment[];
+}
+
+interface price {
+  min?: string;
+  max?: string;
+}
+
+export interface FilterType {
+  city?: string;
+  property_type?: string;
+  price?: price;
+  area?: price;
+  year_built?: string;
+  sale_type?: string;
+  rent?: price;
+}

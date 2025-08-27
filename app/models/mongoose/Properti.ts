@@ -6,13 +6,13 @@ const PropertiSchema : Schema = new Schema(
     name: { type: String, required: true },
     province: { type: String, required: true },
     city: { type: String, required: true },
-    area: { type: Number, required: true },
-    rooms: { type: Number, required: true },
-    bathrooms: { type: Number, required: true },
-    year_built: { type: Number, required: true },
+    area: { type: String, required: true },
+    rooms: { type: String, required: true },
+    bathrooms: { type: String, required: true },
+    year_built: { type: String, required: true },
     sale_type: { type: String, enum: ["Sale", "Rent"], required: true },
-    price: { type: Number, default: null },
-    rent: { type: Number, default: null },
+    price: { type: String, default: null },
+    rent: { type: String, default: null },
     address: { type: String, required: true },
     property_type: { type: String, required: true },
     features: { type: [String], default: [] },
@@ -21,4 +21,4 @@ const PropertiSchema : Schema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.models.Properti || mongoose.model<PropertiType>("Properti", PropertiSchema);
+export default mongoose.models.Propertie || mongoose.model<PropertiType>("Propertie", PropertiSchema);
