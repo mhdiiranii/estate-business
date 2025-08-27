@@ -1,7 +1,10 @@
 import { FilterType } from "../models/types/properti";
 
+
+
 export default function DynamicFilter(props: FilterType) {
-  let filter: any = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const filter: any = {};
 
   if (props.city) filter.city = props.city;
   if (props.property_type) filter.property_type = props.property_type;
@@ -17,13 +20,14 @@ export default function DynamicFilter(props: FilterType) {
 
   if (props.rent) {
     filter.rent = {};
-    if (props.rent.min !== undefined) filter.price.$gte = props.rent.min;
-    if (props.rent.max !== undefined) filter.price.$lte = props.rent.max;
+    if (props.rent.min !== undefined) filter.rent.$gte = props.rent.min;
+    if (props.rent.max !== undefined) filter.rent.$lte = props.rent.max;
   }
+
   if (props.area) {
-    filter.rent = {};
-    if (props.area.min !== undefined) filter.price.$gte = props.area.min;
-    if (props.area.max !== undefined) filter.price.$lte = props.area.max;
+    filter.area = {};
+    if (props.area.min !== undefined) filter.area.$gte = props.area.min;
+    if (props.area.max !== undefined) filter.area.$lte = props.area.max;
   }
 
   return filter;

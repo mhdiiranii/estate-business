@@ -84,6 +84,6 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({}, { status: 200 });
     }
   } catch (error) {
-    return NextResponse.json({ message: "server have pproblem!" }, { status: 501 });
+    return NextResponse.json({ error:error, message: "server have pproblem!" }, { status: 501 });
   }
 }
