@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+p {
+  @apply text-grey-60;
+}
+
+@media (min-width: 380) {
+  .icon-style {
+    width: 28px;
+    height: 28px;
+  }
+  a {
+    @apply text-xs;
+  }
+  p {
+    @apply text-sm;
+  }
+  h1 {
+    @apply text-[28px] font-semibold;
+  }
+  h2 {
+    @apply text-[28px] font-semibold;
+  }
+  h3 {
+    @apply text-2xl font-bold;
+  }
+}
+
+@media (min-width: 1440) {
+  .icon-style {
+    width: 34px;
+    height: 34px;
+  }
+  a {
+    @apply text-sm;
+  }
+  p {
+    @apply text-base;
+  }
+  h1 {
+    @apply text-5xl font-semibold;
+  }
+  h2 {
+    @apply text-4xl font-semibold;
+  }
+  h3 {
+    @apply text-3xl font-bold;
+  }
+}
+
+@media (min-width: 1920) {
+  .icon-style {
+    width: 48px;
+    height: 48px;
+  }
+  a {
+    @apply text-lg;
+  }
+  p {
+    @apply text-lg;
+  }
+  h1 {
+    @apply text-6xl font-semibold;
+  }
+  h2 {
+    @apply text-5xl font-semibold;
+  }
+  h3 {
+    @apply text-4xl font-bold;
+  }
+}
