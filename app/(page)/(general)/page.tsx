@@ -1,5 +1,4 @@
 "use client";
-
 import Properties from "@/app/component/home-layout/properties";
 import HeroSection from "../../component/home-layout/heroSection";
 

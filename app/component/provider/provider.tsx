@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "next-themes";
+import '@ant-design/v5-patch-for-react-19';
 
 const queryClient = new QueryClient();
 
