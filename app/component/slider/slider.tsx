@@ -7,8 +7,10 @@ import { MdOutlineApartment, MdBathroom, MdBedroomParent } from "react-icons/md"
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import Framer from "../framer/framer";
 
-
 const CustomSlider = (props: SliderType) => {
+  
+  
+
   const increment = () => {
     if (props.setPage) {
       props.setPage((prev) => prev + 1);
@@ -20,22 +22,21 @@ const CustomSlider = (props: SliderType) => {
     }
   };
 
-  console.log(props.loading);
-
+  console.log(props.limit)
   return (
     <div className="w-full flex gap-12 flex-col">
       <div className="flex min-h-[700px] justify-between items-start laptop:gap-5 desktop:gap-7  w-full">
         {props.loading ? (
-          <Framer height="700px" column="three" />
+          <Framer height="700px" column={props.limit}/>
         ) : (
           props.data?.map((item, index) => (
-            <div key={index} className="flex  w-full h-[90vh] flex-col gap-8  p-10 border-grey-15 dark:bg-grey-08 rounded-lg ">
-              <Image src={item.images[1]} alt="hello" width={300} height={400} className="w-full h-[40vh] rounded-lg " />
+            <div key={index} className="flex justify-around w-full  h-full flex-col gap-8  p-10 border-grey-15 dark:bg-grey-08 rounded-lg ">
+              <Image src={item.images[1]} alt="hello" width={300} height={400} className="w-auto h-[40vh] rounded-lg " />
               <div className="flex flex-col">
                 <h4>{item.name}</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, sequi.</p>
               </div>
-              <div className="flex flex-wrap w-full gap-1">
+              <div className="flex w-full gap-1">
                 <div className="slider-btn">
                   <MdBedroomParent className="bg-white rounded-sm dark:text-black" />
                   <span className="flex items-center">
@@ -80,7 +81,7 @@ const CustomSlider = (props: SliderType) => {
           </div>
           <div className="flex items-center gap-2">
             <Button disabled={props.page === 1 ? true : false} onClick={decrement} type="primary" className="slider-action-btn" icon={<GrFormPreviousLink size={30} />}></Button>
-            <Button disabled={props.page === props.length  ? true : false} onClick={increment} type="primary" className="slider-action-btn" icon={<GrFormNextLink size={30} />}></Button>
+            <Button disabled={props.page === props.length ? true : false} onClick={increment} type="primary" className="slider-action-btn" icon={<GrFormNextLink size={30} />}></Button>
           </div>
         </div>
       </div>
