@@ -2,6 +2,7 @@ import "../../globals.css";
 import { Providers } from "@/app/component/provider/provider";
 import Nav from "../../component/nav/nav";
 import '@ant-design/v5-patch-for-react-19';
+import Footer from "@/app/component/footer/footer";
 
 
 export default function HomeLayout({
@@ -15,6 +16,7 @@ export default function HomeLayout({
         <Providers>
           <Nav/>
           <main className="mt-32">{children}</main>
+          <Footer/>
         </Providers>
       </body>
     </html>

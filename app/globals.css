@@ -139,7 +139,7 @@ p {
 }
 
 .slider-btn{
-  @apply flex gap-2 items-center  bg-grey-10 border-grey-15 px-3.5 py-2 rounded-full;
+  @apply flex w-full gap-2 items-center  bg-grey-10 border-grey-15 px-3.5 py-2 rounded-full;
 }
 
 .slider-action-btn {

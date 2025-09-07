@@ -6,7 +6,7 @@ const ApiClient = () => {
     headers: { "Content-Type": "application/json" },
   });
 
-  const getPropertiPage = (page: number, limit: number) => AxiosRequest.get(`properti?page=${page}&limit=${limit}`);
+  const getPropertiPage = (page: number, limit: number | null ) => AxiosRequest.get(`properti?page=${page}&limit=${limit}`);
   return {
     getPropertiPage,
   };

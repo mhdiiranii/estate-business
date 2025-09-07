@@ -55,4 +55,5 @@ export interface SliderType {
   page?: number;
   setPage?: Dispatch<SetStateAction<number>>;
   loading?: boolean;
+  limit?: number | null;
 }
