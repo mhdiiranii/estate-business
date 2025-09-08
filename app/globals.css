@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* purple */
+  --color-purple-60: #703bf7;
+  --color-purple-65: #8254f8;
+  --color-purple-70: #946cf9;
+  --color-purple-75: #a685fa;
+  --color-purple-90: #dbcefd;
+  --color-purple-95: #ede7fe;
+  --color-purple-97: #f4f0fe;
+  --color-purple-99: #fbfaff;
+
+  /* white */
+  --color-white-90: #e4e4e7;
+  --color-white-95: #f1f1f3;
+  --color-white-97: #f7f7f8;
+  --color-white-99: #fcfcfd;
+
+  /* grey */
+  --color-grey-08: #141414;
+  --color-grey-10: #1a1a1a;
+  --color-grey-15: #262626;
+  --color-grey-20: #333333;
+  --color-grey-30: #4d4d4d;
+  --color-grey-40: #666666;
+  --color-grey-50: #808080;
+  --color-grey-60: #999999;
+
+  /* screen */
+  --breakpoint-laptop: 1440px;
+  --breakpoint-desktop: 1920px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@custom-variant dark (&:where(.dark, .dark *));
+
+.ant-tooltip-inner {
+  font-size: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+p {
+  @apply text-grey-60;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.icon-style {
+  @apply w-7 h-7 laptop:w-9 laptop:h-9 desktop:w-12 desktop:h-12;
+}
+
+a {
+  @apply laptop:text-sm text-xs desktop:text-lg;
+}
+p {
+  @apply laptop:text-sm text-xs desktop:text-lg text-grey-60;
+}
+h1 {
+  @apply laptop:text-5xl text-[28px] desktop:text-6xl font-semibold;
+}
+h2 {
+  @apply laptop:text-4xl text-[28px] desktop:text-5xl font-semibold;
+}
+h3 {
+  @apply text-2xl laptop:text-3xl desktop:text-4xl font-semibold;
+}
+h5 {
+  @apply laptop:text-xl text-lg desktop:text-2xl font-semibold;
+}
+
+.container-section {
+  @apply p-4 laptop:px-20 desktop:px-0 desktop:container desktop:mx-auto flex flex-col justify-center items-center;
+}
+
+.my-btn {
+  @apply !w-auto !h-auto laptop:!w-auto !py-3.5 laptop:!py-3.5 laptop:!px-5 desktop:!px-6 desktop:!py-4 !text-sm !rounded-[10px] desktop:!text-lg;
+}
+
+.sub-container {
+  @apply flex flex-col max-laptop:justify-center max-laptop:items-center  py-4 px-4 border-grey-15  laptop:py-3.5 laptop:px-5 desktop:px-6 desktop:py-4 dark:bg-grey-10;
+}
+
+.sub-card {
+  @apply dark:!bg-grey-10 !py-3.5 !px-5 !flex !justify-center !items-center;
+}
+
+.ant-card-body {
+  @apply flex flex-col justify-center !p-0 items-center gap-4;
+}
+
+.slider-btn {
+  @apply flex w-auto gap-2 items-center  bg-grey-10 border-grey-15 px-3.5 py-2 rounded-full;
+}
+
+.slider-action-btn {
+  @apply disabled:opacity-30 disabled:dark:!bg-grey-10 disabled:!shadow-none !text-lg laptop:!text-2xl !px-2.5 !py-2.5 laptop:!px-3.5 laptop:!py-3.5 !rounded-full !bg-white !w-auto !h-auto !text-black dark:!text-white border-black !shadow-lg hover:!shadow-2xl duration-200  dark:!bg-grey-20  dark:!border-grey-15;
 }

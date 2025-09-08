@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       {
         message: "there are a problem in server!",
         operation: false,
-        error:error
+        error: error,
       },
       {
         status: 500,
@@ -49,9 +49,20 @@ export async function GET(req: NextRequest) {
   await dbConnect();
 
   const methodIs = req.method;
-
+  const query = req.nextUrl.searchParams;
   if (methodIs != "GET") {
     return NextResponse.json({}, { status: 405 });
+  }
+  if (query) {
+    const page = parseInt(query.get("page") as string);
+    const limit = parseInt(query.get("limit") as string);
+    const skip = (page - 1) * limit;
+
+    const lengthProperties = await Properti.find({})  
+    const count = lengthProperties.length/limit
+    const properti = await Properti.find({}).skip(skip).limit(limit).lean();
+
+    return NextResponse.json({ data: properti, length: count, operation: true }, { status: 200 });
   }
 
   try {
@@ -65,7 +76,7 @@ export async function GET(req: NextRequest) {
       {
         message: "there are a problem in server!",
         operation: false,
-        error:error
+        error: error,
       },
       {
         status: 500,

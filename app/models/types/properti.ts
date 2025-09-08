@@ -1,4 +1,5 @@
 import { Document } from "mongoose";
+import { Dispatch, SetStateAction } from "react";
 
 export interface PropertiType extends Document {
   name: string;
@@ -29,7 +30,7 @@ type Coment = {
 
 export interface CommentType extends Document {
   propertiId: string;
-  comments : Coment[];
+  comments: Coment[];
 }
 
 interface price {
@@ -45,4 +46,14 @@ export interface FilterType {
   year_built?: string;
   sale_type?: string;
   rent?: price;
+}
+
+export interface SliderType {
+  data?: PropertiType[];
+  length?: number;
+  operation?: boolean;
+  page?: number;
+  setPage?: Dispatch<SetStateAction<number>>;
+  loading?: boolean;
+  limit?: number | null;
 }
