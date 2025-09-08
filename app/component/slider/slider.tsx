@@ -29,7 +29,7 @@ const CustomSlider = (props: SliderType) => {
           <Framer height="700px" column={props.limit}/>
         ) : (
           props.data?.map((item, index) => (
-            <div key={index} className="flex max-md:col-span-full justify-around w-full h-full flex-col gap-8 p-6 laptop:p-7 desktop:p-10 border-grey-15 dark:bg-grey-08 rounded-lg ">
+            <div key={index} className="flex border-grey-60 max-md:col-span-full justify-around w-full h-full flex-col gap-8 p-6 laptop:p-7 desktop:p-10  rounded-lg ">
               <Image src={item.images[1]} alt="hello" width={300} height={400} className="w-auto h-[40vh] rounded-lg " />
               <div className="flex flex-col">
                 <h4>{item.name}</h4>
