@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export interface PropertiType extends Document {
   name: string;
