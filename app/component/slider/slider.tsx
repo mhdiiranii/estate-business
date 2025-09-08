@@ -22,21 +22,20 @@ const CustomSlider = (props: SliderType) => {
     }
   };
 
-  console.log(props.limit)
   return (
     <div className="w-full flex gap-12 flex-col">
-      <div className="flex min-h-[700px] justify-between items-start laptop:gap-5 desktop:gap-7  w-full">
+      <div className="grid max-md:screengrid-cols-1 max-laptop:grid-cols-2 laptop:grid-cols-3 min-h-[700px] justify-between items-start laptop:gap-5 desktop:gap-7  w-full">
         {props.loading ? (
           <Framer height="700px" column={props.limit}/>
         ) : (
           props.data?.map((item, index) => (
-            <div key={index} className="flex justify-around w-full  h-full flex-col gap-8  p-10 border-grey-15 dark:bg-grey-08 rounded-lg ">
+            <div key={index} className="flex max-md:col-span-full justify-around w-full h-full flex-col gap-8 p-6 laptop:p-7 desktop:p-10 border-grey-15 dark:bg-grey-08 rounded-lg ">
               <Image src={item.images[1]} alt="hello" width={300} height={400} className="w-auto h-[40vh] rounded-lg " />
               <div className="flex flex-col">
                 <h4>{item.name}</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, sequi.</p>
               </div>
-              <div className="flex w-full gap-1">
+              <div className="  flex flex-wrap w-full gap-1">
                 <div className="slider-btn">
                   <MdBedroomParent className="bg-white rounded-sm dark:text-black" />
                   <span className="flex items-center">

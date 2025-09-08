@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @theme {
   /* purple */
   --color-purple-60: #703bf7;
@@ -36,90 +35,38 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 .ant-tooltip-inner {
-  font-size: 16px; 
+  font-size: 16px;
 }
 
 p {
   @apply text-grey-60;
 }
 
-@media (min-width: 380px) {
-  .icon-style {
-    width: 28px;
-    height: 28px;
-  }
-  a {
-    @apply text-xs;
-  }
-  p {
-    @apply text-sm;
-  }
-  h1 {
-    @apply text-[28px] font-semibold;
-  }
-  h2 {
-    @apply text-[28px] font-semibold;
-  }
-  h3 {
-    @apply text-2xl font-semibold;
-  }
-   h5 {
-    @apply text-lg font-semibold;
-  }
+.icon-style {
+  @apply w-7 h-7 laptop:w-9 laptop:h-9 desktop:w-12 desktop:h-12;
 }
 
-@media (min-width: 1440px) {
-  .icon-style {
-    width: 34px;
-    height: 34px;
-  }
-  a {
-    @apply text-sm;
-  }
-  p {
-    @apply text-base;
-  }
-  h1 {
-    @apply text-5xl font-semibold;
-  }
-  h2 {
-    @apply text-4xl font-semibold;
-  }
-  h3 {
-    @apply text-3xl font-semibold;
-  }
-   h5 {
-    @apply text-xl font-semibold;
-  }
+a {
+  @apply laptop:text-sm text-xs desktop:text-lg;
+}
+p {
+  @apply laptop:text-sm text-xs desktop:text-lg text-grey-60;
+}
+h1 {
+  @apply laptop:text-5xl text-[28px] desktop:text-6xl font-semibold;
+}
+h2 {
+  @apply laptop:text-4xl text-[28px] desktop:text-5xl font-semibold;
+}
+h3 {
+  @apply text-2xl laptop:text-3xl desktop:text-4xl font-semibold;
+}
+h5 {
+  @apply laptop:text-xl text-lg desktop:text-2xl font-semibold;
 }
 
-@media (min-width: 1920px) {
-  .icon-style {
-    width: 48px;
-    height: 48px;
-  }
-  a {
-    @apply text-lg;
-  }
-  p {
-    @apply text-lg;
-  }
-  h1 {
-    @apply text-6xl font-semibold;
-  }
-  h2 {
-    @apply text-5xl font-semibold;
-  }
-  h3 {
-    @apply text-4xl font-semibold;
-  }
-  h5 {
-    @apply text-2xl font-semibold;
-  }
-}
-
-.container-section{
-  @apply p-8 laptop:px-20 desktop:px-28 flex flex-col justify-center items-center;
+.container-section {
+  @apply p-4 laptop:px-20 desktop:px-0 desktop:container desktop:mx-auto flex flex-col justify-center items-center;
 }
 
 .my-btn {
@@ -130,23 +77,18 @@ p {
   @apply flex flex-col max-laptop:justify-center max-laptop:items-center  py-4 px-4 border-grey-15  laptop:py-3.5 laptop:px-5 desktop:px-6 desktop:py-4 dark:bg-grey-10;
 }
 
-.sub-card{
+.sub-card {
   @apply dark:!bg-grey-10 !py-3.5 !px-5 !flex !justify-center !items-center;
 }
 
-.ant-card-body{
+.ant-card-body {
   @apply flex flex-col justify-center !p-0 items-center gap-4;
 }
 
-.slider-btn{
-  @apply flex w-full gap-2 items-center  bg-grey-10 border-grey-15 px-3.5 py-2 rounded-full;
+.slider-btn {
+  @apply flex w-auto gap-2 items-center  bg-grey-10 border-grey-15 px-3.5 py-2 rounded-full;
 }
 
 .slider-action-btn {
-  @apply disabled:!bg-grey-10 !px-3.5 !py-3.5 !rounded-full !bg-white !w-auto !h-auto !text-black dark:!text-white border-black !shadow-lg hover:!shadow-2xl duration-200  dark:!bg-grey-20  dark:!border-grey-15;
+  @apply disabled:opacity-30 disabled:dark:!bg-grey-10 disabled:!shadow-none !px-3.5 !py-3.5 !rounded-full !bg-white !w-auto !h-auto !text-black dark:!text-white border-black !shadow-lg hover:!shadow-2xl duration-200  dark:!bg-grey-20  dark:!border-grey-15;
 }
-
-
-
-
-

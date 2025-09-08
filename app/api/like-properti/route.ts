@@ -79,7 +79,6 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ message: "not found properti!" }, { status: 404 });
     }
     const isRm = await ToLike.deleteOne({ userId, propertiId });
-    console.log(isRm.acknowledged)
     if (isRm.acknowledged) {
       return NextResponse.json({}, { status: 200 });
     }

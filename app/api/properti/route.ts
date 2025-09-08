@@ -50,7 +50,6 @@ export async function GET(req: NextRequest) {
 
   const methodIs = req.method;
   const query = req.nextUrl.searchParams;
-  console.log(query)
   if (methodIs != "GET") {
     return NextResponse.json({}, { status: 405 });
   }
