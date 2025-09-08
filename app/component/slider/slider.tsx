@@ -79,8 +79,8 @@ const CustomSlider = (props: SliderType) => {
             <p>{props.length}</p>
           </div>
           <div className="flex items-center gap-2">
-            <Button disabled={props.page === 1 ? true : false} onClick={decrement} type="primary" className="slider-action-btn" icon={<GrFormPreviousLink size={30} />}></Button>
-            <Button disabled={props.page === props.length ? true : false} onClick={increment} type="primary" className="slider-action-btn" icon={<GrFormNextLink size={30} />}></Button>
+            <Button disabled={props.page === 1 ? true : false} onClick={decrement} type="primary" className="slider-action-btn" ><GrFormPreviousLink  /></Button>
+            <Button disabled={props.page === props.length ? true : false} onClick={increment} type="primary" className="slider-action-btn" ><GrFormNextLink  /></Button>
           </div>
         </div>
       </div>

@@ -42,12 +42,12 @@ const Properties = () => {
     <section className="container-section">
       <div className="flex flex-col justify-between px-6">
         <h2 className="w-full text-left">Featured Properties</h2>
-        <div className="flex  justify-between gap-10 mt-3.5 mb-20">
-          <p className="w-2/3">
+        <div className="flex flex-wrap justify-between gap-10 mt-3.5 mb-20">
+          <p className="w-2/3 max-md:w-full">
             Explore our handpicked selection of featured properties. Each listing offers a glimpse into exceptional homes and investments available through Estatein. Click View Details for more
             information.
           </p>
-          <Button type="text" className="my-btn dark:!bg-grey-15 dark:hover:!bg-grey-10 dark:!text-white">
+          <Button type="text" className="my-btn dark:!bg-grey-15 max-md:!w-full dark:hover:!bg-grey-10 dark:!text-white">
             View All Properties
           </Button>
         </div>

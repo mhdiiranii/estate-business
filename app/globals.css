@@ -90,5 +90,5 @@ h5 {
 }
 
 .slider-action-btn {
-  @apply disabled:opacity-30 disabled:dark:!bg-grey-10 disabled:!shadow-none !px-3.5 !py-3.5 !rounded-full !bg-white !w-auto !h-auto !text-black dark:!text-white border-black !shadow-lg hover:!shadow-2xl duration-200  dark:!bg-grey-20  dark:!border-grey-15;
+  @apply disabled:opacity-30 disabled:dark:!bg-grey-10 disabled:!shadow-none !text-lg laptop:!text-2xl !px-2.5 !py-2.5 laptop:!px-3.5 laptop:!py-3.5 !rounded-full !bg-white !w-auto !h-auto !text-black dark:!text-white border-black !shadow-lg hover:!shadow-2xl duration-200  dark:!bg-grey-20  dark:!border-grey-15;
 }
