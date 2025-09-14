@@ -6,7 +6,7 @@ import Cta from "@/app/component/home-layout/cta";
 export default function Home() {
   
   return (
-    <div className="flex flex-col gap-36">
+    <div className="flex flex-col gap-20 py-20">
       <HeroSection/>
       <Properties/>
       <Cta/>

@@ -15,7 +15,7 @@ export default function HomeLayout({
       <body className="">
         <Providers>
           <Nav/>
-          <main className="mt-32">{children}</main>
+          <main className="">{children}</main>
           <Footer/>
         </Providers>
       </body>

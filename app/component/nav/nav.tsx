@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaSignInAlt } from "react-icons/fa";
-import { Tooltip } from "antd";
+import { CiLogin, CiLogout } from "react-icons/ci";
+import { Button, Tooltip } from "antd";
 import Themes from "@/app/themes";
+import { signOut, useSession } from "next-auth/react";
 
 const route = [
   {
@@ -29,8 +30,29 @@ const route = [
   },
 ];
 
-const Nav = () => {
+export const AuthBtn = () => {
+  const { status } = useSession();
 
+  if (status === "unauthenticated") {
+    return (
+      <Tooltip title={"login"} color={"pink"} arrow>
+        <Link href={"./login"} className="flex items-center px-6 py-3.5  rounded-lg hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black">
+          <CiLogin size={20} />
+        </Link>
+      </Tooltip>
+    );
+  }
+
+  return (
+    <Tooltip title={"logout"} color={"pink"} arrow>
+      <Button type="text" onClick={()=>signOut()} className="!flex !h-auto !items-center !px-6 !py-3.5 !rounded-lg dark:!text-white hover:!bg-black hover:!text-white  dark:hover:!bg-white dark:hover:!text-black">
+        <CiLogout  size={20} />
+      </Button>
+    </Tooltip>
+  );
+};
+
+const Nav = () => {
   return (
     <div className="flex justify-between items-center fixed top-0 w-full z-20 bg-white  dark:bg-black py-8 px-10">
       <div className="flex items-center gap-1">
@@ -45,12 +67,8 @@ const Nav = () => {
         ))}
       </div>
       <div className="flex items-center gap-1">
-        <Tooltip title={'login'} color={"pink"} arrow >
-          <Link href={"./login"} className="flex items-center px-6 py-3.5 rounded-lg hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black">
-            <FaSignInAlt size={20} />
-          </Link>
-        </Tooltip>
-        <Themes/>
+        <AuthBtn/>
+        <Themes />
       </div>
     </div>
   );
