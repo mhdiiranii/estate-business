@@ -14,7 +14,10 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         password: { label: "password", type: "password" },
       },
       authorize: async (credentials) => {
-        const { username, password } = await LogInSchema.parseAsync(credentials);
+        const parsed = await LogInSchema.safeParseAsync(credentials);
+        if (!parsed.success) return null;
+
+        const { username, password } = parsed.data;
         if (!credentials.password && !credentials.username) return null;
 
         try {
@@ -36,6 +39,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             provider: user.provider,
           };
         } catch (error) {
+          console.log(error);
           return null;
         }
       },
@@ -45,7 +49,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    
     jwt({ token, user }) {
       if (user) {
         const u = user as MyUser;
@@ -67,6 +70,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         session.user.sub = token.sub;
       }
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      console.log(baseUrl)
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      return baseUrl;
     },
   },
   pages: {

@@ -6,6 +6,8 @@ import { Button, Form, Input } from "antd";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import z from "zod";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import Link from "next/link";
 
 const LogeIn = () => {
   const [form] = Form.useForm();
@@ -26,10 +28,9 @@ const LogeIn = () => {
             errors: ["نام کاربری یا رمز عبور اشتباه است."],
           },
         ]);
-        
       } else {
         console.log("ورود موفق");
-        router.push('/')
+        router.push("/");
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -49,23 +50,32 @@ const LogeIn = () => {
         size="large"
         layout="vertical"
         className="!flex !flex-col  !justify-center !items-center !py-6 !px-10 rounded-lg border border-grey-60 shadow-xl"
-        initialValues={{ remember: true }}
+        initialValues={{}}
         onFinish={handleFinish}
         onFinishFailed={() => {
           console.log("fild");
         }}
       >
-        <Form.Item<LogInType> className="!w-full" label="Username" name="username" rules={[{ required: true, message: "Please input your username!" }]}>
-          <Input className="!bg-inherit" autoComplete="off" />
+        <Form.Item<LogInType>
+          className="!w-full text-red-500"
+          label={<span className="text-black dark:text-white">Username</span>}
+          name="username"
+          rules={[{required:true , message: "Please input your username!" }]}
+          
+        >
+          <Input className="!bg-inherit dark:!text-white !text-black" autoComplete="off" />
         </Form.Item>
 
-        <Form.Item<LogInType> label="Password" name="password" rules={[{ required: true, message: "Please input your password!" }]}>
-          <Input.Password />
+        <Form.Item<LogInType> label={<span className="text-black dark:text-white">Password</span>} name="password" rules={[{required:true , message: "Please input your password!" }]}>
+          <Input.Password autoComplete="new-password" className="!bg-inherit dark:!text-white !text-black" iconRender={(visible) => (visible ? <FaRegEye /> : <FaRegEyeSlash />)} />
         </Form.Item>
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
+          </Button>
+          <Button href="./login/register" type="link" className="!border !border-blue-700 !ml-4">
+            Sign Up
           </Button>
         </Form.Item>
       </Form>

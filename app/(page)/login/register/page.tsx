@@ -1,17 +1,19 @@
 "use client";
 
-import { LogInType, RegisterUser } from "@/app/models/types/user";
+import { LogInType, RegisterUser, SignUpType } from "@/app/models/types/user";
+import { AuthSchema } from "@/app/models/zod/AuthSchema";
 import { LogInSchema } from "@/app/models/zod/LogIn";
 import ApiClient from "@/app/services/ApiClient";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Form, Input } from "antd";
 import { signIn } from "next-auth/react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import z from "zod";
 
 const Register = () => {
   const [form] = Form.useForm();
 
-   const registerMutation = useMutation({
+  const registerMutation = useMutation({
     mutationFn: async (formData: RegisterUser) => {
       const res = await ApiClient().register(formData);
       return res.data;
@@ -24,11 +26,21 @@ const Register = () => {
     },
   });
 
-  const handleFinish = async (values: RegisterUser) => {
-    registerMutation.mutate(values);
+  const handleFinish = async (values: SignUpType) => {
+    try {
+      AuthSchema.parse(values);
+      registerMutation.mutate(values);
+    } catch (error) {
+      console.log(error);
+      if (error instanceof z.ZodError) {
+        const err = error.issues.map((item) => ({
+          name: [item.path[0]],
+          errors: [item.message],
+        }));
+        form.setFields(err);
+      }
+    }
   };
-
-  
 
   return (
     <div className="w-full min-h-[100vh]  flex justify-center items-center p-6">
@@ -43,20 +55,20 @@ const Register = () => {
           console.log("fild");
         }}
       >
-        <Form.Item<RegisterUser> className="!w-full" label="Email" name="email" rules={[{ required: true, message: "Please input your username!" }]}>
-          <Input className="!bg-inherit" autoComplete="off" />
+        <Form.Item<SignUpType> className="!w-full" label={<span className="text-black dark:text-white">Email</span>} name="email" rules={[{ message: "Please input your username!" }]}>
+          <Input className="!bg-inherit dark:!text-white !text-black" autoComplete="off" />
         </Form.Item>
-        <Form.Item<RegisterUser> className="!w-full" label="Username" name="username" rules={[{ required: true, message: "Please input your username!" }]}>
-          <Input className="!bg-inherit" autoComplete="off" />
+        <Form.Item<SignUpType> className="!w-full" label={<span className="text-black dark:text-white">Username</span>} name="username" rules={[{ message: "Please input your username!" }]}>
+          <Input className="!bg-inherit dark:!text-white !text-black" autoComplete="off" />
         </Form.Item>
 
-        <Form.Item<RegisterUser> label="Password" name="password" rules={[{ required: true, message: "Please input your password!" }]}>
-          <Input.Password />
+        <Form.Item<SignUpType> label={<span className="text-black dark:text-white">Password</span>} name="password" rules={[{ message: "Please input your password!" }]}>
+          <Input.Password autoComplete="new-password" className="!bg-inherit dark:!text-white !text-black" iconRender={(visible) => (visible ? <FaRegEye /> : <FaRegEyeSlash />)} />
         </Form.Item>
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
-            Submit
+            Sign Up
           </Button>
         </Form.Item>
       </Form>
