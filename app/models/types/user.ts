@@ -1,4 +1,4 @@
-import z, { boolean } from "zod";
+import z from "zod";
 import { AuthSchema } from "../zod/AuthSchema";
 import User from "../mongoose/User";
 

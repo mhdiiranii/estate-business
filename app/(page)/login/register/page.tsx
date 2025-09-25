@@ -1,12 +1,10 @@
 "use client";
 
-import { LogInType, RegisterUser, SignUpType } from "@/app/models/types/user";
+import { RegisterUser, SignUpType } from "@/app/models/types/user";
 import { AuthSchema } from "@/app/models/zod/AuthSchema";
-import { LogInSchema } from "@/app/models/zod/LogIn";
 import ApiClient from "@/app/services/ApiClient";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input } from "antd";
-import { signIn } from "next-auth/react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import z from "zod";
 
@@ -55,14 +53,14 @@ const Register = () => {
           console.log("fild");
         }}
       >
-        <Form.Item<SignUpType> className="!w-full" label={<span className="text-black dark:text-white">Email</span>} name="email" rules={[{ message: "Please input your username!" }]}>
+        <Form.Item<SignUpType> className="!w-full" label={<span className="text-black dark:text-white">Email</span>} name="email" rules={[{required:true , message: "Please input your username!" }]}>
           <Input className="!bg-inherit dark:!text-white !text-black" autoComplete="off" />
         </Form.Item>
-        <Form.Item<SignUpType> className="!w-full" label={<span className="text-black dark:text-white">Username</span>} name="username" rules={[{ message: "Please input your username!" }]}>
+        <Form.Item<SignUpType> className="!w-full" label={<span className="text-black dark:text-white">Username</span>} name="username" rules={[{required:true , message: "Please input your username!" }]}>
           <Input className="!bg-inherit dark:!text-white !text-black" autoComplete="off" />
         </Form.Item>
 
-        <Form.Item<SignUpType> label={<span className="text-black dark:text-white">Password</span>} name="password" rules={[{ message: "Please input your password!" }]}>
+        <Form.Item<SignUpType> label={<span className="text-black dark:text-white">Password</span>} name="password" rules={[{required:true , message: "Please input your password!" }]}>
           <Input.Password autoComplete="new-password" className="!bg-inherit dark:!text-white !text-black" iconRender={(visible) => (visible ? <FaRegEye /> : <FaRegEyeSlash />)} />
         </Form.Item>
 

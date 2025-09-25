@@ -4,7 +4,7 @@ import dbConnect from "./lib/mongoClient";
 import User from "./models/mongoose/User";
 import bcrypt from "bcryptjs";
 import { LogInSchema } from "./models/zod/LogIn";
-import { MyUser, RegisterUser } from "./models/types/user";
+import { MyUser } from "./models/types/user";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [

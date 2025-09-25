@@ -1,4 +1,4 @@
-import { ConfigProvider, Flex, Row, Skeleton, theme } from "antd";
+import { ConfigProvider, Flex, Skeleton, theme } from "antd";
 
 interface FrameType {
   height: string;

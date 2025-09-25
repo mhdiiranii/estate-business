@@ -7,7 +7,6 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import z from "zod";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import Link from "next/link";
 
 const LogeIn = () => {
   const [form] = Form.useForm();
