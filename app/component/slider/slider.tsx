@@ -5,7 +5,7 @@ import { Button } from "antd";
 import Image from "next/image";
 import { MdOutlineApartment, MdBathroom, MdBedroomParent } from "react-icons/md";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
-import Framer from "../framer/framer";
+import SkeletonSlider from "../framer/skeletonSlider";
 
 const CustomSlider = (props: SliderType) => {
   
@@ -26,7 +26,7 @@ const CustomSlider = (props: SliderType) => {
     <div className="w-full flex gap-12 flex-col">
       <div className="grid max-md:screengrid-cols-1 max-laptop:grid-cols-2 laptop:grid-cols-3 min-h-[700px] justify-between items-start laptop:gap-5 desktop:gap-7  w-full">
         {props.loading ? (
-          <Framer height="700px" column={props.limit}/>
+          <SkeletonSlider height="700px" column={props.limit}/>
         ) : (
           props.data?.map((item, index) => (
             <div key={index} className="flex border border-grey-15 max-md:col-span-full justify-around w-full h-full flex-col gap-8 p-6 laptop:p-7 desktop:p-10  rounded-lg ">

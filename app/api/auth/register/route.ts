@@ -6,7 +6,7 @@ import CreateUserCode from "@/app/lib/userCode";
 
 export async function POST(req: NextRequest) {
   await dbConnect();
-  const formData = await req.formData();
+  const {username,email,password} = await req.json();
   const methodIs = req.method;
 
   if (methodIs != "POST") {
@@ -14,10 +14,6 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const username = formData.get("username");
-    const email = formData.get("email");
-    const password = formData.get("password")?.toString();
-
     if (!username && !email && !password) {
       return NextResponse.json({}, { status: 400 });
     }
