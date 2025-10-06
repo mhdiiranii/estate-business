@@ -1,10 +1,24 @@
 "use client";
+
 import { useState, useEffect } from "react";
-import { Button, ConfigProvider, Tooltip } from "antd";
+import { Button, ConfigProvider, Switch, Tooltip } from "antd";
 import { useTheme } from "next-themes";
 import { MdOutlineLightMode, MdDarkMode } from "react-icons/md";
 
-const Themes = () => {
+export function RangeThems() {
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return <Switch checked={ resolvedTheme == 'dark'} onChange={()=>setTheme(()=>resolvedTheme == 'dark'? "light":"dark")} checkedChildren={resolvedTheme} unCheckedChildren={resolvedTheme}/>;
+}
+
+export function Themes() {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -24,7 +38,7 @@ const Themes = () => {
           theme={{
             components: {
               Button: {
-                textTextColor:"#fff",
+                textTextColor: "#fff",
                 textHoverBg: "#fff",
                 textTextHoverColor: "#000",
               },
@@ -62,6 +76,4 @@ const Themes = () => {
       </ConfigProvider>
     </div>
   );
-};
-
-export default Themes;
+}

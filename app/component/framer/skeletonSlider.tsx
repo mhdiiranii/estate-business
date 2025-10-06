@@ -1,4 +1,7 @@
+'use client'
+
 import { ConfigProvider, Flex, Skeleton, theme } from "antd";
+import { useTheme } from "next-themes";
 
 interface FrameType {
   height: string;
@@ -6,13 +9,18 @@ interface FrameType {
 }
 
 const SkeletonSlider = ({ height, column }: FrameType) => {
+
+  const {  resolvedTheme } = useTheme();
+
+
+
   return (
     <div className={`w-full col-span-full min-h-[${height}] rounded-2xl flex gap-4 p-4 `}>
       {Array.from({ length: column as number }).map((iten, index) => (
         <div key={index} className="w-full flex flex-col gap-6">
           <ConfigProvider
             theme={{
-              algorithm: theme.darkAlgorithm,
+              algorithm: resolvedTheme == 'light'? theme.defaultAlgorithm : theme.darkAlgorithm,
             }}
           >
             <Skeleton.Image active className="!w-full !min-h-[40vh]" />

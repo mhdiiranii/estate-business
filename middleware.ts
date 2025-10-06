@@ -10,7 +10,7 @@ export async function middleware(request:NextRequest) {
     return NextResponse.redirect(new URL('/',request.url))
   }
 
-  if(request.nextUrl.pathname === '/login'){
+  if(request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/login/register'){
     return NextResponse.next()
   }
 
@@ -23,5 +23,7 @@ export async function middleware(request:NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|favicon.ico).*)'],
+   matcher: [
+    '/((?!api|_next|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|ico|webp|css|js)|$).*)',
+  ],
 };

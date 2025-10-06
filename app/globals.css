@@ -47,22 +47,22 @@ p {
 }
 
 a {
-  @apply laptop:text-sm text-xs desktop:text-lg;
+  @apply xl:text-sm text-xs 2xl:text-lg;
 }
 p {
-  @apply laptop:text-sm text-xs desktop:text-lg text-grey-60;
+  @apply xl:text-sm text-xs 2xl:text-lg text-grey-60;
 }
 h1 {
-  @apply laptop:text-5xl text-[28px] desktop:text-6xl font-semibold;
+  @apply xl:text-5xl text-[28px] 2xl:text-6xl font-semibold;
 }
 h2 {
-  @apply laptop:text-4xl text-[28px] desktop:text-5xl font-semibold;
+  @apply xl:text-4xl text-[28px] 2xl:text-5xl font-semibold;
 }
 h3 {
-  @apply text-2xl laptop:text-3xl desktop:text-4xl font-semibold;
+  @apply text-2xl xl:text-3xl 2xl:text-4xl font-semibold;
 }
 h5 {
-  @apply laptop:text-xl text-lg desktop:text-2xl font-semibold;
+  @apply xl:text-xl text-lg 2xl:text-2xl font-semibold;
 }
 
 .container-section {

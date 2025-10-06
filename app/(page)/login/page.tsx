@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import z from "zod";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { RangeThems } from "@/app/themes";
 
 const LogeIn = () => {
   const [form] = Form.useForm();
@@ -43,12 +44,15 @@ const LogeIn = () => {
   };
 
   return (
-    <div className="w-full min-h-[100vh]  flex justify-center items-center p-6">
+    <div className="w-full min-h-[100vh]  flex flex-col justify-center items-center p-6">
+      <div className="w-full absolute top-0 flex justify-end items-center p-8 ">
+        <RangeThems />
+      </div>
       <Form
         form={form}
         size="large"
         layout="vertical"
-        className="!flex !flex-col  !justify-center !items-center !py-6 !px-10 rounded-lg border border-grey-60 shadow-xl"
+        className="!flex drop-shadow-xs max-lg:h-[60vh] drop-shadow-grey-60 !flex-col !justify-center !items-center !py-6 !px-10 rounded-lg border border-grey-60 shadow-md shadow-grey-60 "
         initialValues={{}}
         onFinish={handleFinish}
         onFinishFailed={() => {
@@ -59,23 +63,28 @@ const LogeIn = () => {
           className="!w-full text-red-500"
           label={<span className="text-black dark:text-white">Username</span>}
           name="username"
-          rules={[{required:true , message: "Please input your username!" }]}
-          
+          rules={[{ required: true, message: "Please input your username!" }]}
         >
-          <Input className="!bg-inherit dark:!text-white !text-black" autoComplete="off" />
+          <Input className="!bg-inherit shadow-xs shadow-grey-60 dark:!text-white !text-black" autoComplete="off" />
         </Form.Item>
 
-        <Form.Item<LogInType> label={<span className="text-black dark:text-white">Password</span>} name="password" rules={[{required:true , message: "Please input your password!" }]}>
-          <Input.Password autoComplete="new-password" className="!bg-inherit dark:!text-white !text-black" iconRender={(visible) => (visible ? <FaRegEye /> : <FaRegEyeSlash />)} />
+        <Form.Item<LogInType> label={<span className="text-black dark:text-white">Password</span>} name="password" rules={[{ required: true, message: "Please input your password!" }]}>
+          <Input.Password
+            autoComplete="new-password"
+            className="!bg-inherit shadow-xs shadow-grey-60 dark:!text-white !text-black"
+            iconRender={(visible) => (visible ? <FaRegEye /> : <FaRegEyeSlash />)}
+          />
         </Form.Item>
 
-        <Form.Item label={null}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-          <Button href="./login/register" type="link" className="!border !border-blue-700 !ml-4">
-            Sign Up
-          </Button>
+        <Form.Item label={null} className="!w-full">
+          <div className="w-full flex flex-col gap-2 ">
+            <Button type="primary" htmlType="submit">
+              Login
+            </Button>
+            <Button href="./login/register" type="link" className="!border !border-blue-700">
+              Sign Up
+            </Button>
+          </div>
         </Form.Item>
       </Form>
     </div>
