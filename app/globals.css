@@ -92,3 +92,9 @@ h5 {
 .slider-action-btn {
   @apply disabled:opacity-30 disabled:dark:!bg-grey-10 disabled:!shadow-none !text-lg laptop:!text-2xl !px-2.5 !py-2.5 laptop:!px-3.5 laptop:!py-3.5 !rounded-full !bg-white !w-auto !h-auto !text-black dark:!text-white border-black !shadow-lg hover:!shadow-2xl duration-200  dark:!bg-grey-20  dark:!border-grey-15;
 }
+
+.navigating-body {
+  @apply relative !p-12
+  before:absolute before:w-full before:h-[1px] before:bg-gradient-to-r before:from-[#703BF7] before:from-0% before:via-[rgba(112,59,247,0.5)] before:to-[rgba(112,59,247,0.0)] before:to-35% before:via-20% before:-top-[2px] 
+  after:absolute after:w-[1px] after:h-full after:-left-[2px] after:bg-gradient-to-b after:from-[#703BF7] after:from-0% after:via-[rgba(112,59,247,0.5)] after:to-[rgba(112,59,247,0.0)] after:to-80% after:via-60%; 
+}

@@ -166,30 +166,15 @@ const About = () => {
           {navigating.map((item) => (
             <Card
               key={item.id}
-              className="!bg-inherit !w-full lg:!w-1/4 grow-3 !min-h-max  border !p-12 dark:!border-grey-15"
-              classNames={{ title: "dark:text-white text-black", header: "!px-0" }}
-              title={item.title}
+              className="!bg-inherit !w-full lg:!w-1/4 grow-3 !min-h-max  border !p- dark:!border-grey-15"
+              classNames={{
+                body: "navigating-body",
+                title: "dark:text-white text-black",
+                header: "!px-0 relative after:absolute !border-none after:w-[1px] after:h-full after:bg-purple-60 after:-left-[2px] !py-4 !px-5 ",
+              }}
+              title={item.head}
             >
-              <p>{item.descriptions}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
-      <section className="flex flex-col items-start gap-3.5 w-full px-4">
-        <div className="flex flex-col items-start gap-3.5 w-full">
-          <h2>Meet the Estatein Team</h2>
-          <p>
-            At Estatein, our success is driven by the dedication and expertise of our team. Get to know the people behind our mission to make your real estate dreams a reality.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-10">
-          {navigating.map((item) => (
-            <Card
-              key={item.id}
-              className="!bg-inherit !w-full lg:!w-1/4 grow-3 !min-h-max  border !p-12 dark:!border-grey-15"
-              classNames={{ title: "dark:text-white text-black", header: "!px-0" }}
-              title={item.title}
-            >
+              <h5 className="dark:text-white text-black after:absolute relative">{item.title}</h5>
               <p>{item.descriptions}</p>
             </Card>
           ))}
