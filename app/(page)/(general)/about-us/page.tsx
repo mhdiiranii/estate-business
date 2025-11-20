@@ -2,6 +2,8 @@
 import { FaStar } from "react-icons/fa";
 import Image from "next/image";
 import { Card } from "antd";
+import Slider from "@/app/component/slider/slider";
+import Cta from "@/app/component/home-layout/cta";
 
 const achievements = [
   {
@@ -56,7 +58,7 @@ const navigating = [
   },
   {
     id: 6,
-    headr: "Step 06",
+    head: "Step 06",
     title: "Getting the Best Deal",
     descriptions: "We'll help you negotiate the best terms and prepare your offer. Our goal is to secure the property at the right price and on favorable terms.",
   },
@@ -64,7 +66,7 @@ const navigating = [
 
 const About = () => {
   return (
-    <div className="mx-auto container mt-32 flex flex-col gap-14 lg:gap-36">
+    <div className="mx-auto container my-32 flex flex-col gap-14 lg:gap-36">
       <section className="flex max-laptop:flex-col-reverse w-full max-2xl:gap-10 justify-between items-center px-4">
         <div className="flex flex-col  justify-between items-start gap-10 w-full">
           <div className="flex flex-col justify-start items-start max-2xl:w-full w-3/4 gap-2.5">
@@ -74,7 +76,7 @@ const About = () => {
               years, we ve expanded our reach, forged valuable partnerships, and gained the trust of countless clients.
             </p>
           </div>
-          <div className="flex justify-between items-center max-2xl:w-full 2xl:w-3/4 max-2xl:flex-warp">
+          <div className="flex justify-between items-center gap-5 max-2xl:w-full 2xl:w-3/4 max-2xl:flex-warp">
             <div className="sub-container max-laptop:flex-[48%]">
               <h3>200+</h3>
               <p>Happy Customers</p>
@@ -98,7 +100,7 @@ const About = () => {
           <h2>Our Values</h2>
           <p>Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.</p>
         </div>
-        <div className="flex flex-col lg:p-10 xl:p-[60px] rounded-xl gap-5 lg:gap-16 bg-grey-08 border border-grey-15 shadow-[0_0_0_10px_rgba(#191919)]">
+        <div className="flex flex-col lg:p-10 xl:p-[60px] rounded-xl gap-5 lg:gap-16 bg-white dark:bg-grey-08 border border-grey-15 shadow-[0_0_0_10px_rgba(#191919)]">
           <div className="flex justify-between max-lg:flex-col  lg:items-center gap-8">
             <div className="flex flex-col gap-5">
               <div className="flex items-center gap-3">
@@ -146,7 +148,7 @@ const About = () => {
           <h2>Our Achievements</h2>
           <p>Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.</p>
         </div>
-        <div className="flex gap-10">
+        <div className="flex max-lg:flex-col gap-10">
           {achievements.map((item) => (
             <Card key={item.id} className="!bg-inherit border !p-12 dark:!border-grey-15" classNames={{ title: "dark:text-white text-black", header: "!px-0" }} title={item.title}>
               <p>{item.descriptions}</p>
@@ -180,6 +182,12 @@ const About = () => {
           ))}
         </div>
       </section>
+      <Slider
+        query="companies"
+        head="Our Valued Clients"
+        title="At Estatein, we have had the privilege of working with a diverse range of clients across various industries. Here are some of the clients we've had the pleasure of serving"
+      />
+      <Cta/>
     </div>
   );
 };

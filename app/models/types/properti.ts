@@ -2,19 +2,19 @@ import { Document } from "mongoose";
 import { Dispatch, SetStateAction } from "react";
 
 export interface PropertiType extends Document {
-  name: string;
-  province: string;
-  city: string;
-  area: number;
-  rooms: number;
-  bathrooms: number;
-  year_built: number;
-  sale_type: "Sale" | "Rent";
+  name?: string;
+  province?: string;
+  city?: string;
+  area?: number;
+  rooms?: number;
+  bathrooms?: number;
+  year_built?: number;
+  sale_type?: "Sale" | "Rent";
   price?: number | null;
   rent?: number | null;
-  address: string;
-  property_type: string;
-  features: string[];
+  address?: string;
+  property_type?: string;
+  features?: string[];
   images: string[];
 }
 
@@ -48,8 +48,21 @@ export interface FilterType {
   rent?: price;
 }
 
+export type TestimonialType = {
+  quote: string;
+  source: string;
+};
+export interface CompaniesType {
+  company?: string;
+  since?: string;
+  domain?: string;
+  category?: string;
+  website?: string;
+  testimonial?: TestimonialType;
+}
+
 export interface SliderType {
-  data?: PropertiType[];
+  data?: PropertiType[] | CompaniesType[];
   length?: number;
   operation?: boolean;
   page?: number;
