@@ -10,6 +10,7 @@ import { IoMdClose } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import { useTheme } from "next-themes";
 import { useMenuClose, useSetMenuClose } from "@/app/Store/useStore";
+import { useEffect, useState } from "react";
 
 const route = [
   {
@@ -19,16 +20,21 @@ const route = [
   },
   {
     id: 2,
+    title: "Property",
+    href: "/property",
+  },
+  {
+    id: 3,
     title: "About us",
     href: "/about-us",
   },
   {
-    id: 3,
+    id: 4,
     title: "Contact Us",
     href: "/contact-us",
   },
   {
-    id: 4,
+    id: 5,
     title: "Services",
     href: "/my-services",
   },
@@ -123,6 +129,36 @@ const CustomNav = () => {
 const Nav = () => {
   const setMenuClose = useSetMenuClose();
   const menuClose = useMenuClose();
+  const { status } = useSession();
+  const [mount , setMount] = useState(true)
+
+  const authUser = () => {
+    
+    if (status === "authenticated") {
+      return route.map((item) => (
+        <Link key={item.id} href={item.href} className="duration-300 text-lg hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black px-6 py-3.5 rounded-lg">
+          {item.title}
+        </Link>
+      ));
+    } else {
+      return route.map((item) => (
+        <Link
+          key={item.id}
+          href={item.href}
+          className={`${item.id == 2 && "hidden"} duration-300 text-lg hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black px-6 py-3.5 rounded-lg`}
+        >
+          {item.title}
+        </Link>
+      ));
+    }
+  };
+  useEffect(()=>{
+    setMount(false)
+  },[])
+  
+  if(mount){
+    return null;
+  }
 
   return (
     <div className="flex justify-between items-center fixed top-0 w-full z-20 bg-white  dark:bg-black py-8 px-10">
@@ -131,11 +167,7 @@ const Nav = () => {
         <p className="">Estatein</p>
       </div>
       <div className="flex items-center max-lg:hidden">
-        {route.map((item) => (
-          <Link key={item.id} href={item.href} className="duration-300 text-lg hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black px-6 py-3.5 rounded-lg">
-            {item.title}
-          </Link>
-        ))}
+        {authUser()}
       </div>
       <div className="flex items-center gap-1 max-lg:hidden">
         <AuthBtn />
@@ -151,7 +183,7 @@ const Nav = () => {
               <IoMdClose />
             </span>
           }
-          classNames={{mask:'block lg:!hidden'}}
+          classNames={{ mask: "block lg:!hidden" }}
           className="dark:!bg-black block lg:!hidden  !text-white !border dark:!border-white rounded-tl-2xl rounded-bl-2xl"
           open={menuClose}
           onClose={() => setMenuClose(!menuClose)}

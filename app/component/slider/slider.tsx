@@ -72,7 +72,6 @@ const Slider = ({ query, title, head }: propsType) => {
     }
   };
 
-  console.log(data);
 
   if (query == "properti") {
     return (
