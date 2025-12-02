@@ -14,6 +14,7 @@ interface propsType {
   query: string;
   title: string;
   head: string;
+  viewBtn?: boolean;
 }
 interface getDataType {
   query: string;
@@ -21,7 +22,7 @@ interface getDataType {
   page: number;
 }
 
-const Slider = ({ query, title, head }: propsType) => {
+const Slider = ({ query, title, head, viewBtn = true }: propsType) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState<number | null>(null);
 
@@ -72,20 +73,21 @@ const Slider = ({ query, title, head }: propsType) => {
     }
   };
 
-
   if (query == "properti") {
     return (
       <section className="container-section">
-        <div className="flex flex-col justify-between px-6">
+        <div className="flex w-full flex-col justify-between px-6">
           <h2 className="w-full text-left">{head}</h2>
-          <div className="flex flex-wrap justify-between gap-10 mt-3.5 mb-20">
-            <p className="w-2/3 max-md:w-full">{title}</p>
-            <Button type="text" className="my-btn dark:!bg-grey-15 max-md:!w-full dark:hover:!bg-grey-10 dark:!text-white">
-              View All Properties
-            </Button>
+          <div className="flex  max-md:flex-wrap justify-between gap-10 mt-3.5 mb-20">
+            <p className="w-full max-md:w-full">{title}</p>
+            {viewBtn && (
+              <Button type="text" className="my-btn dark:!bg-grey-15 max-md:!w-full dark:hover:!bg-grey-10 dark:!text-white">
+                View All Properties
+              </Button>
+            )}
           </div>
         </div>
-        <div className="w-full flex gap-12 flex-col">
+        <div className="w-full flex gap-12 flex-col px-6">
           <div className="grid max-md:screengrid-cols-1 max-laptop:grid-cols-2 laptop:grid-cols-3 justify-between items-start laptop:gap-5 desktop:gap-7  w-full">
             {isLoading ? (
               <SkeletonSlider component="properti" column={limit} />
@@ -133,8 +135,8 @@ const Slider = ({ query, title, head }: propsType) => {
               ))
             )}
           </div>
-          <div className="w-full flex px-10 justify-between items-center">
-            <div className="w-full flex justify-between py-5 rounded-lg items-center dark:bg-grey-10 dark:border-grey-15">
+          <div className="w-full flex justify-between items-center">
+            <div className="w-full flex justify-between py-5 rounded-lg items-center px-10 dark:bg-grey-10 dark:border-grey-15">
               <div className="flex gap-1">
                 <p>{page}</p>
                 <p>of</p>
@@ -161,9 +163,11 @@ const Slider = ({ query, title, head }: propsType) => {
         <h2 className="w-full text-left">{head}</h2>
         <div className="flex flex-wrap justify-between gap-10 mt-3.5 mb-20">
           <p className="w-2/3 max-md:w-full">{title}</p>
-          <Button type="text" className="my-btn dark:!bg-grey-15 max-md:!w-full dark:hover:!bg-grey-10 dark:!text-white">
-            View All Properties
-          </Button>
+          {viewBtn && (
+            <Button type="text" className="my-btn dark:!bg-grey-15 max-md:!w-full dark:hover:!bg-grey-10 dark:!text-white">
+              View All Properties
+            </Button>
+          )}
         </div>
       </div>
       <div className="w-full flex gap-12 flex-col">

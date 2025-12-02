@@ -104,8 +104,9 @@ h6 {
 }
 
 .select .ant-select-selector {
-  @apply dark:!bg-grey-10 
+  @apply dark:!bg-grey-10 outline-none 
 }
+
 .select .ant-select-arrow {
   @apply !text-grey-40
 }

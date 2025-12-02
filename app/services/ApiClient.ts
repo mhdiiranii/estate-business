@@ -7,14 +7,16 @@ const ApiClient = () => {
     headers: { "Content-Type": "application/json" },
   });
 
-  const getProperti = (page: number, limit: number | null ) => AxiosRequest.get(`properti?page=${page}&limit=${limit}`);
-  const getCompanies = (page: number, limit: number | null ) => AxiosRequest.get(`companies?page=${page}&limit=${limit}`);
-  const register = (data:RegisterUser) => AxiosRequest.post(`auth/register`,data);
-  
+  const getProperti = (page: number, limit: number | null) => AxiosRequest.get(`properti?page=${page}&limit=${limit}`);
+  const getCompanies = (page: number, limit: number | null) => AxiosRequest.get(`companies?page=${page}&limit=${limit}`);
+  const register = (data: RegisterUser) => AxiosRequest.post(`auth/register`, data);
+  const filtersItem = () => AxiosRequest.get(`properti/filter-items`);
+
   return {
     getProperti,
     register,
-    getCompanies
+    getCompanies,
+    filtersItem
   };
 };
 
