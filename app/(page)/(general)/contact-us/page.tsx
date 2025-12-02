@@ -3,31 +3,13 @@
 import { Button, Card, Col, ConfigProvider, Form, Input, Row, Select, Tag } from "antd";
 import { FaPhone } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
-import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import Social from "@/public/contact/social.svg";
 import { FiArrowUpRight } from "react-icons/fi";
 import Image from "next/image";
 import { FaPhoneAlt } from "react-icons/fa";
 import Cta from "@/app/(page)/(block)/cta";
 
-const items = [
-  {
-    icon: <MdOutlineEmail />,
-    title: "info@estatein.com",
-  },
-  {
-    icon: <FaPhone />,
-    title: "+1 (123) 456-7890",
-  },
-  {
-    icon: <IoLocationSharp />,
-    title: "Main Headquarters",
-  },
-  {
-    icon: Social,
-    title: "",
-  },
-];
 
 const Contact = () => {
   return (

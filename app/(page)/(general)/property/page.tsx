@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, Col, ConfigProvider, Form, Input, Row, Select, Tag } from "antd";
+import { Button, Col, ConfigProvider, Form, Input, Row, Select } from "antd";
 import { IoIosSearch } from "react-icons/io";
 import Filters from "./(block)/filter";
 import Slider from "@/app/component/slider/slider";
