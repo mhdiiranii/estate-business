@@ -1,4 +1,3 @@
-import Cta from "@/app/component/home-layout/cta";
 import { Button, Card } from "antd";
 import Image from "next/image";
 import { BsShop } from "react-icons/bs";
@@ -6,6 +5,7 @@ import { FaCameraRetro } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
 import { IoSunnySharp } from "react-icons/io5";
 import { TbBuildingEstate } from "react-icons/tb";
+import Cta from "../../(block)/cta";
 
 const Services = () => {
   return (

@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
     const skip = (page - 1) * limit;
 
     const lengthCompanies = await Companies.find({});
-    console.log(lengthCompanies.length);
     const count = lengthCompanies.length / limit;
     const companies = await Companies.find({}).skip(skip).limit(limit).lean();
 

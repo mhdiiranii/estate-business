@@ -72,7 +72,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       return session;
     },
     async redirect({ url, baseUrl }) {
-      console.log(baseUrl)
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       return baseUrl;
     },

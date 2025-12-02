@@ -1,7 +1,7 @@
 "use client";
 import Slider from "@/app/component/slider/slider";
-import HeroSection from "../../component/home-layout/heroSection";
-import Cta from "@/app/component/home-layout/cta";
+import Cta from "../(block)/cta";
+import HeroSection from "./(block)/heroSection";
 
 export default function Home() {
   return (

@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import Image from "next/image";
 import { Card } from "antd";
 import Slider from "@/app/component/slider/slider";
-import Cta from "@/app/component/home-layout/cta";
+import Cta from "../../(block)/cta";
 
 const achievements = [
   {

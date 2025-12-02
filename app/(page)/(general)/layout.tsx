@@ -1,8 +1,8 @@
 import "../../globals.css";
 import { Providers } from "@/app/component/provider/provider";
-import Nav from "../../component/nav/nav";
+import Nav from "../(block)/nav";
 import '@ant-design/v5-patch-for-react-19';
-import Footer from "@/app/component/footer/footer";
+import Footer from "../(block)/footer";
 
 
 export default function HomeLayout({

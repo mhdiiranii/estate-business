@@ -31,7 +31,6 @@ const Filters = () => {
     }));
   };
 
-  console.log(send);
 
   return (
     <Row gutter={100} justify={"space-between"} className=" !w-full">

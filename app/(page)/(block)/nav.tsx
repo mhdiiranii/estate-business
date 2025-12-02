@@ -130,10 +130,9 @@ const Nav = () => {
   const setMenuClose = useSetMenuClose();
   const menuClose = useMenuClose();
   const { status } = useSession();
-  const [mount , setMount] = useState(true)
+  const [mount, setMount] = useState(true);
 
   const authUser = () => {
-    
     if (status === "authenticated") {
       return route.map((item) => (
         <Link key={item.id} href={item.href} className="duration-300 text-lg hover:bg-black hover:text-white  dark:hover:bg-white dark:hover:text-black px-6 py-3.5 rounded-lg">
@@ -152,11 +151,11 @@ const Nav = () => {
       ));
     }
   };
-  useEffect(()=>{
-    setMount(false)
-  },[])
-  
-  if(mount){
+  useEffect(() => {
+    setMount(false);
+  }, []);
+
+  if (mount) {
     return null;
   }
 
@@ -166,9 +165,7 @@ const Nav = () => {
         <Image src={"./icon.svg"} alt="icon" className="icon-style" width={40} height={40} />
         <p className="">Estatein</p>
       </div>
-      <div className="flex items-center max-lg:hidden">
-        {authUser()}
-      </div>
+      <div className="flex items-center max-lg:hidden">{authUser()}</div>
       <div className="flex items-center gap-1 max-lg:hidden">
         <AuthBtn />
         <Themes />

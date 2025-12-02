@@ -8,7 +8,7 @@ import Social from "@/public/contact/social.svg";
 import { FiArrowUpRight } from "react-icons/fi";
 import Image from "next/image";
 import { FaPhoneAlt } from "react-icons/fa";
-import Cta from "@/app/component/home-layout/cta";
+import Cta from "@/app/(page)/(block)/cta";
 
 const items = [
   {

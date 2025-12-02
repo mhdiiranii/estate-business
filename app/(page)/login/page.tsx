@@ -29,7 +29,6 @@ const LogeIn = () => {
           },
         ]);
       } else {
-        console.log("ورود موفق");
         router.push("/");
       }
     } catch (error) {

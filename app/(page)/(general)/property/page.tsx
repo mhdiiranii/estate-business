@@ -4,7 +4,7 @@ import { Button, Card, Col, ConfigProvider, Form, Input, Row, Select, Tag } from
 import { IoIosSearch } from "react-icons/io";
 import Filters from "./(block)/filter";
 import Slider from "@/app/component/slider/slider";
-import Cta from "@/app/component/home-layout/cta";
+import Cta from "@/app/(page)/(block)/cta";
 
 const Property = () => {
   return (
